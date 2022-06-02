@@ -45,18 +45,16 @@ class FileiraInvaders {
         }
 
         this.velocidade = {
-            x: 5,
+            x: 2,
             y: 0
         }
 
         this.invaders = [];
-        const linhas = Math.floor(Math.random() * 10 + 5); // Sortea a quantidade de linhas
-        const colunas = Math.floor(Math.random() * 10 + 2);// Sortea a quantidade de colunas
 
-        this.tamanho = colunas * 30;
+        this.tamanho = 5 * 60;
 
-        for(let x = 0; x < linhas; x++){ // Numero de invaders no X
-            for(let y = 0; y < colunas; y++){ // Numero de invaders no Y
+        for(let x = 0; x < 10; x++){ // Numero de invaders no X
+            for(let y = 0; y < 5; y++){ // Numero de invaders no Y
                 this.invaders.push(new Invader({posicao: {
                     x: x * 30,
                     y: y * 30

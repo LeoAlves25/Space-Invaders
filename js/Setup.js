@@ -1,8 +1,8 @@
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext("2d");
 
-canvas.width = 824;
-canvas.height = 641;
+canvas.width = 1366;
+canvas.height = 768;
 
 //Criar objeto Nave
 const nave = new Nave();
@@ -45,7 +45,7 @@ function animar(){
 
     if(teclas.arrowLeft.pressionado && nave.posicao.x >= 0){
         nave.velocidade.x = -4;
-    } else if(teclas.arrowRight.pressionado && nave.posicao.x <= 795){
+    } else if(teclas.arrowRight.pressionado && nave.posicao.x <= 1335){
         nave.velocidade.x = 4;
     } else {
         nave.velocidade.x = 0;
