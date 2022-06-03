@@ -41,7 +41,7 @@ class FileiraInvaders {
     constructor() {
         this.posicao = {
             x: 0,
-            y: 0
+            y: 20
         }
 
         this.velocidade = {
@@ -69,6 +69,9 @@ class FileiraInvaders {
 
         if(this.posicao.x + this.tamanho >= canvas.width || this.posicao.x <= 0){
             this.velocidade.x = -this.velocidade.x;
+            this.velocidade.y=10;
+        }else{
+            this.velocidade.y=0;
         }
     }
 }
