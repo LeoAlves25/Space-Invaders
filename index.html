@@ -1,19 +1,23 @@
-<head>
-    <meta charset="UTF-8">
-    <title>Space Invaders</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<div style="position: relative;" id="parentDiv">
+<body>
+  <div style="position: relative;" id="parentDiv">
     <p
-      style="position: absolute; z-index: 10; color: rgb(0, 0, 0); left: 140px; top: 10px; margin: 0;"
+      style="position: absolute; z-index: 10; color: white; left: 10px; top: 10px; margin: 0;"
     >
-      <span>Pontuação:</span> <span id="pontuacaoInfo">0</span>
+      <span id="scoreEl">< Score: 0 ></span>
+      <span id="vidaEl">< Vidas: 3 ></span>
+      <span id="poweredby">Leonardo Castro & Felype Clayton</span>
     </p>
     <canvas></canvas>
-</div>
-<canvas></canvas>
-<!-- <script src="js/Nave.js"></script>
-<script src="js/Invader.js"></script>
-<script src="js/Setup.js"></script> -->
+  </div>
+</body>
+
+<link rel="stylesheet" href="./css/style.css">
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+  integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
 <script src="js/index.js"></script>

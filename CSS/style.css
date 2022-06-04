@@ -1,8 +1,45 @@
+@font-face {
+    font-family: bit8;
+    src: url('../fonts/8-bit-pusab.TTF');
+}
+
 *{
     text-align: center;
 }
 
 body {
     margin: 0;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    font-family: sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+#scoreEl{
+    position: relative;
+    top: -50px;
+}
+
+#vidaEl{
+    position: relative;
+    top: -50px;
+    left: 540px;
+}
+
+#poweredby{
+    font-size: 10px;
+    position: absolute;
+    top: 600px;
+    left: 245px;
+    width: 500px;
+}
+
+span{
+    margin-top: 5px;
+    font-family: "bit8";
+    font-size: 22px;
+    color: #00fc01;
 }
