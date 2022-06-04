@@ -16,9 +16,9 @@ class Nave {
     this.opacity = 1
 
     const image = new Image()
-    image.src = './img/spaceship.png'
+    image.src = './Imagens/canhao.png'
     image.onload = () => {
-      const scale = 0.15
+      const scale = 1
       this.image = image
       this.width = image.width * scale
       this.height = image.height * scale
@@ -117,7 +117,7 @@ class Invader {
     }
 
     const image = new Image()
-    image.src = './img/invader.png'
+    image.src = './Imagens/alien.png'
     image.onload = () => {
       const scale = 1
       this.image = image
