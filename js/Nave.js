@@ -46,7 +46,7 @@ class Projetil{
     mostrar() {
         c.beginPath();
         c.arc(this.posicao.x, this.posicao.y, this.tamanho, 0, Math.PI * 2);
-        c.fillStyle = "red";
+        c.fillStyle = "white";
         c.fill();
         c.closePath();
     }
