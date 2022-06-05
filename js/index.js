@@ -289,7 +289,7 @@ class Grid {
                 x: x * 30,
                 y: y * 30
               }
-            }, './img/invader2.png')
+            }, './img/invader.png')
           )
         } else if(y == 2) {
           this.invaders.push(
@@ -316,7 +316,7 @@ class Grid {
                 x: x * 30,
                 y: y * 30
               }
-            }, './img/invader.png')
+            }, './img/invader2.png')
           )
         } 
       }
@@ -351,11 +351,38 @@ const barriers = [
   new Barrier({position: { x: 580, y:400 }},'./img/barreira1.png'),
   new Barrier({position: { x: 820, y:400 }},'./img/barreira1.png')
 ];
+
 var qntdDeMortes = 0;
 var qntdDeVida = 3;
 var naveTocada = false;
 var hiscores = [];
 var invaders = 0;
+
+var tiroInvader = new Audio()
+tiroInvader.src = './Sons/laser1.wav'
+var tiroCanhao = new Audio()
+tiroCanhao.src = './Sons/shoot.wav'
+
+var canhaoExplode = new Audio()
+canhaoExplode.src = './Sons/explosion.wav'
+var barreiraExplode = new Audio()
+barreiraExplode.src = './Sons/barrierExplode.wav'
+
+var invader1Morto = new Audio()
+invader1Morto.src = './Sons/invaderkilled1.wav'
+var invader2Morto = new Audio()
+invader2Morto.src = './Sons/invaderkilled2.wav'
+var invader3Morto = new Audio()
+invader3Morto.src = './Sons/invaderkilled3.wav'
+var invader4Morto = new Audio()
+invader4Morto.src = './Sons/invaderkilled4.wav'
+
+var fimDeJogo = new Audio()
+fimDeJogo.src = './Sons/game-over.wav'
+
+var tema = new Audio()
+tema.src = './Sons/music.mp3'
+tema.play()
 
 const keys = {
   esquerda: {
@@ -456,6 +483,9 @@ function endGame() {
   hiscores.push(score);
   console.log(hiscores);
 
+  fimDeJogo.play()
+  tema.pause()
+
   if(qntdDeMortes >= 3 || naveTocada == true){
     console.log('tu morreu cabaço')
 
@@ -493,12 +523,13 @@ function endGame() {
   }
 }
 
+
 function animate() {
   if (!game.active) return
-  if (invaders == 1) {
-    endGame();
-    return;
-  }
+  // if (invaders == 1) {
+  //   endGame();
+  //   return;
+  // }
   requestAnimationFrame(animate)
 
   c.fillStyle = 'black'
@@ -555,6 +586,9 @@ function animate() {
           } else if(barrier.qntdDeAcertos == 3){
             barriers.splice(barrierIndex,1);
           }
+
+          barreiraExplode.play()
+
         }, 0)
       }
     }
@@ -571,6 +605,7 @@ function animate() {
       vidaEl.innerHTML = "< Vidas: " + qntdDeVida +" >";
       invaderProjectiles.splice(index, 1)
       if(qntdDeMortes >= 3){
+        canhaoExplode.play()
         endGame()
       }
     }
@@ -597,6 +632,8 @@ function animate() {
       grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(
         invaderProjectiles
       )
+      tiroInvader.play()
+      tiroInvader.volume = 0.2
     }
 
     for (let i = grid.invaders.length - 1; i >= 0; i--) {
@@ -631,12 +668,18 @@ function animate() {
               if(invaderFound.image.currentSrc == "http://127.0.0.1:5500/img/invader.png"){
                   score += 10;
                   valorDeScore = 10;
+                  invader1Morto.play()
+                  invader1Morto.volume = 0.2
               } else if(invaderFound.image.currentSrc == "http://127.0.0.1:5500/img/invader2.png"){
                   score += 20;
                   valorDeScore = 20;
+                  invader2Morto.play()
+                  invader2Morto.volume = 0.2
               } else if(invaderFound.image.currentSrc == "http://127.0.0.1:5500/img/invader3.png"){
                   score += 40;
                   valorDeScore = 40;
+                  invader3Morto.play()
+                  invader3Morto.volume = 0.2
               }
 
               // dynamic score labels
@@ -649,7 +692,7 @@ function animate() {
                 fades: true
               })
 
-              grid.velocity.x += grid.velocity.x * (grid.invaders.length / 2500);
+              grid.velocity.x += grid.velocity.x * (grid.invaders.length / 1700);
 
               grid.invaders.splice(i, 1)
               projectiles.splice(j, 1)
@@ -669,6 +712,13 @@ function animate() {
                 grids.splice(gridIndex, 1)
               }
             }
+
+            if(score == 1500){
+              endGame();
+            }
+
+            tema.playbackRate += 0.001;
+
           }, 0)
         }
       })
@@ -682,6 +732,7 @@ function animate() {
         !game.over
       ) {
         naveTocada = true;
+        canhaoExplode.play()
         endGame()
       }
     } // end looping over grid.invaders
@@ -721,6 +772,9 @@ addEventListener('keydown', ({
       break
     case 'ArrowUp':
       keys.cima.pressed = true
+
+      tiroCanhao.play()
+      tiroCanhao.volume = 0.2
 
       projectiles.push(
         new Projectile({
