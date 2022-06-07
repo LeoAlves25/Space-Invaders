@@ -1,6 +1,33 @@
+document.getElementById("NomesRank").style.display = "none"
+
 const scoreEl = document.querySelector('#scoreEl')
 const vidaEl = document.querySelector('#vidaEl')
 const canvas = document.querySelector('canvas')
+
+const resultado=document.querySelector("#resultado")
+
+const primeiroNome = document.querySelector('#primeiroNome')
+const segundoNome = document.querySelector('#segundoNome')
+const terceiroNome = document.querySelector('#terceiroNome')
+const quartoNome = document.querySelector('#quartoNome')
+const quintoNome = document.querySelector('#quintoNome')
+const sextoNome = document.querySelector('#sextoNome')
+const setimoNome = document.querySelector('#setimoNome')
+const oitavoNome = document.querySelector('#oitavoNome')
+const nonoNome = document.querySelector('#nonoNome')
+const decimoNome = document.querySelector('#decimoNome')
+
+const primeiroPont = document.querySelector('#primeiroPont')
+const segundoPont = document.querySelector('#segundoPont')
+const terceiroPont = document.querySelector('#terceiroPont')
+const quartoPont = document.querySelector('#quartoPont')
+const quintoPont = document.querySelector('#quintoPont')
+const sextoPont = document.querySelector('#sextoPont')
+const setimoPont = document.querySelector('#setimoPont')
+const oitavoPont = document.querySelector('#oitavoPont')
+const nonoPont = document.querySelector('#nonoPont')
+const decimoPont = document.querySelector('#decimoPont')
+
 const c = canvas.getContext('2d')
 
 canvas.width = 1024
@@ -340,6 +367,8 @@ function randomBetween(min, max) {
   return Math.random() * (max - min) + min
 }
 
+var nomePlayer=""
+
 const player = new Player()
 const projectiles = []
 const grids = []
@@ -382,7 +411,13 @@ fimDeJogo.src = './Sons/game-over.wav'
 
 var tema = new Audio()
 tema.src = './Sons/music.mp3'
-tema.play()
+
+nomePlayer=prompt("Informe o seu nome!")
+
+if(nomePlayer!=""){
+  tema.play()
+}
+
 
 const keys = {
   esquerda: {
@@ -480,14 +515,18 @@ function rectangularCollision({
 }
 
 function endGame() {
+  document.getElementById("NomesRank").style.display = "block"
+
   hiscores.push(score);
   console.log(hiscores);
 
   fimDeJogo.play()
   tema.pause()
 
+  criarRank(nomePlayer, score)
+
   if(qntdDeMortes >= 3 || naveTocada == true){
-    console.log('tu morreu cabaço')
+    resultado.innerHTML="QUE PAIA. TU PERDEU, OH."
 
     setTimeout(() => {
       player.opacity = 0
@@ -504,7 +543,7 @@ function endGame() {
       fades: true
     })
   } else {
-    console.log('tu ganhou cabaço')
+    resultado.innerHTML = "MASSA! TU GANHOU, OH!"
 
     setTimeout(() => {
       player.opacity = 0
@@ -755,6 +794,56 @@ function animate() {
   }
 
   frames++
+}
+
+function criarRank (nomePlayer, score){
+  var jogadores=["Paulo", "Gilson", "Elon Musk", "Jeff Bezos", "Roger", "Bill Gates", "Darth Vader", "Spock", "Bilu", "Marvin"]
+  var pontuacao=[1400, 1300, 1250, 1200, 1100, 1050, 1000, 900, 800, 750]
+
+  jogadores.push(nomePlayer)
+  pontuacao.push(score)
+
+  for(let i=0; i<pontuacao.length;i++){
+    for(let j=0;j<pontuacao.length-1;j++){
+      if(pontuacao[j]<pontuacao[j+1]){
+        var auxPont=pontuacao[j]
+        pontuacao[j]=pontuacao[j+1]
+        pontuacao[j+1]=auxPont
+
+        var auxJog=jogadores[j]
+        jogadores[j]=jogadores[j+1]
+        jogadores[j+1]=auxJog
+      }
+    }
+  }
+
+  primeiroNome.innerHTML = jogadores[0]
+  segundoNome.innerHTML = jogadores[1]
+  terceiroNome.innerHTML = jogadores[2]
+  quartoNome.innerHTML = jogadores[3]
+  quintoNome.innerHTML = jogadores[4]
+  sextoNome.innerHTML = jogadores[5]
+  setimoNome.innerHTML = jogadores[6]
+  oitavoNome.innerHTML = jogadores[7]
+  nonoNome.innerHTML = jogadores[8]
+  decimoNome.innerHTML = jogadores[9]
+
+  primeiroPont.innerHTML = pontuacao[0]
+  segundoPont.innerHTML = pontuacao[1]
+  terceiroPont.innerHTML = pontuacao[2]
+  quartoPont.innerHTML = pontuacao[3]
+  quintoPont.innerHTML = pontuacao[4]
+  sextoPont.innerHTML = pontuacao[5]
+  setimoPont.innerHTML = pontuacao[6]
+  oitavoPont.innerHTML = pontuacao[7]
+  nonoPont.innerHTML = pontuacao[8]
+  decimoPont.innerHTML = pontuacao[9]
+
+  console.log(jogadores)
+  console.log(pontuacao)
+
+  document.getElementById("scoreEl").style.display="none"
+  document.getElementById("vidaEl").style.display="none"
 }
 
 animate()

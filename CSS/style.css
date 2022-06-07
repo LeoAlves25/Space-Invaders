@@ -43,3 +43,38 @@ span{
     font-size: 22px;
     color: #00fc01;
 }
+
+#NomesRank{
+    background-color: black;
+    width: 1024;
+    height: 576;
+    position: absolute;
+}
+
+#resultado{
+    color: #00fc01;
+    font-family: "bit8";
+    top: 5px;
+    margin-left: 290px;
+
+}
+
+h1{
+    position: relative;
+    color: #00fc01;
+    top: 60px;
+    font-size: 16px;
+    font-family: "bit8";
+    margin-top: -38px;
+    margin-right: 300px;
+}
+
+h2{
+    position: relative;
+    top: 20px;
+    color: white;
+    font-size: 16px;
+    font-family: "bit8";
+    margin-top: 10px;
+    margin-right: -170px;
+}
