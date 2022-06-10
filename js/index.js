@@ -367,8 +367,6 @@ function randomBetween(min, max) {
   return Math.random() * (max - min) + min
 }
 
-var nomePlayer=""
-
 const player = new Player()
 const projectiles = []
 const grids = []
@@ -412,12 +410,7 @@ fimDeJogo.src = './Sons/game-over.wav'
 var tema = new Audio()
 tema.src = './Sons/music.mp3'
 
-nomePlayer=prompt("Informe o seu nome!")
-
-if(nomePlayer!=""){
-  tema.play()
-}
-
+var nomePlayer=prompt("Informe o seu nome!")
 
 const keys = {
   esquerda: {
@@ -816,7 +809,6 @@ function criarRank (nomePlayer, score){
       }
     }
   }
-
   primeiroNome.innerHTML = jogadores[0]
   segundoNome.innerHTML = jogadores[1]
   terceiroNome.innerHTML = jogadores[2]
@@ -841,7 +833,6 @@ function criarRank (nomePlayer, score){
 
   console.log(jogadores)
   console.log(pontuacao)
-
   document.getElementById("scoreEl").style.display="none"
   document.getElementById("vidaEl").style.display="none"
 }
@@ -898,7 +889,9 @@ addEventListener('keyup', ({
       break
     case 'ArrowUp':
       keys.cima.pressed = false
-
       break
+    case "s":
+      tema.play()
+    break;    
   }
 })
