@@ -12,7 +12,10 @@ Projeto final da cadeira de raciocínio lógico.<br>
   <li>Barreiras protetoras fixas que se quebram a medida que levam dano;</li>
   <li>Sistema de rank com a pontuação dos 10 melhores jogadores (utilizando o método do bubble sort).</li>
 </ul>
-<br>
-![Space Win](https://user-images.githubusercontent.com/99600394/174867503-49698363-3e34-47dc-a104-7a73e769102f.gif)
-<br>
+<h2>Jogador vencendo</h2>
+
+![Space Win](https://user-images.githubusercontent.com/99600394/174868450-b2d73681-b804-4bd8-957d-4e207707783a.gif)
+
+<h2>Jogador perdendo</h2>
+
 ![Space Lose](https://user-images.githubusercontent.com/99600394/174867645-f995bfb2-840e-4e62-8597-89110acc84fa.gif)
