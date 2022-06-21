@@ -610,11 +610,11 @@ function animate() {
           barrier.qntdDeAcertos++;
 
           if(barrier.qntdDeAcertos == 1){
-            barrier.image.src = "http://127.0.0.1:5500/img/barreira2.png";
-            barrier.image.currentSrc = "http://127.0.0.1:5500/img/barreira2.png";
+            barrier.image.src = "./img/barreira2.png";
+            barrier.image.currentSrc = "./img/barreira2.png";
           } else if(barrier.qntdDeAcertos == 2){
-            barrier.image.src = "http://127.0.0.1:5500/img/barreira3.png";
-            barrier.image.currentSrc = "http://127.0.0.1:5500/img/barreira3.png";
+            barrier.image.src = "./img/barreira3.png";
+            barrier.image.currentSrc = "./img/barreira3.png";
           } else if(barrier.qntdDeAcertos == 3){
             barriers.splice(barrierIndex,1);
           }
